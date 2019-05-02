@@ -11,11 +11,10 @@
 
     <body>
         <h1>{{title}}</h1>
-        <p>{{msg}}</p>
-        <form action="{% url 'form'%}" method="post">
+        <p>{{message|safe}}</p>
+        <form action="{% url 'index'%}" method="post">
             {% csrf_token %}
-            <lable for="msg">message:</lable>
-            <input id="msg" type="text" name="msg">
+            {{form.as_p}}
             <input type="submit" value="click">
         </form>
     </body>
