@@ -7,16 +7,15 @@ from django.http import HttpResponse
 def index(request):
     params = {
         'title': 'Hello/Index',
-        'msg': 'これは，サンプルでつくったページです',
-        'goto': 'next'
+        'msg': 'お名前は？'
     }
     return render(request, 'hello/index.html', params)
 
 
-def next(request):
+def form(request):
+    msg = request.POST['msg']
     params = {
-        'title': 'Hello/Next',
-        'msg': 'これは，もうひとつのページです',
-        'goto': 'index',
+        'title': 'Hello/Form',
+        'msg': 'こんにちは，'+msg+'さん',
     }
     return render(request, 'hello/index.html', params)
