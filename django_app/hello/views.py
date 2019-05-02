@@ -6,7 +6,7 @@ from .models import Friend
 
 
 def index(request):
-    data = Friend.objects.all()
+    data = Friend.objects.all().values()
     params = {
         'title': 'Hello',
         'data': data,
