@@ -11,28 +11,33 @@
 
     <body>
         <h1>{{title}}</h1>
+        <p>{{message|safe}}</p>
         <table>
-            <form action="{% url 'edit' id %}" method="post">
+
+            <form action="{% url 'find'%}" method="post">
                 {% csrf_token%}
-                {{form.as_table}}
+                {{form}}
                 <tr>
                     <td></td>
                     <td><input type="submit" value="click"></td>
                 </tr>
-                <tr>
-                    <th>data</th>
-                    <th></th>
-                    <th></th>
-                </tr>
-                {% for item in data %}
-                <tr>
-                    <td>{{item}}</td>
-                    <td><a href="{% url 'edit' item.id %}">Edit</a></td>
-                    <td><a href="{% url 'delete' item.id %}">Delete</a></td>
-                </tr>
-                {% endfor %}
-
             </form>
+
+        </table>
+        <hr>
+        <table>
+            <tr>
+                <th>data</th>
+                <th></th>
+                <th></th>
+            </tr>
+            {% for item in data %}
+            <tr>
+                <td>{{item}}</td>
+                <td><a href="{% url 'edit' item.id %}">Edit</a></td>
+                <td><a href="{% url 'delete' item.id %}">Delete</a></td>
+            </tr>
+            {% endfor %}
 
         </table>
 
